@@ -5,7 +5,7 @@ SESSION=simulator
 tmux -2 new-session -d -s $SESSION
 
 tmux rename-window -t $SESSION:0 'robot'
-tmux send-keys -t $SESSION:0 "roslaunch arm_gazebo arm_panda.launch world:=`rospack find arm_gazebo`/worlds/arm_empty.world  x:=-0.10 y:=0 z:=0.615"  C-m
+tmux send-keys -t $SESSION:0 "roslaunch arm_gazebo arm_panda.launch world:=`rospack find arm_gazebo`/worlds/apriltag.world  x:=-0.10 y:=0 z:=0.615"  C-m
 
 sleep 15
 
@@ -21,7 +21,7 @@ sleep 15
 
 tmux new-window -t $SESSION:3 -n 'scripts'
 tmux send-keys -t $SESSION:3 "roscd arm_gazebo/scripts" C-m
-tmux send-keys -t $SESSION:3 "python gazebo_objects.py -a ../config/ARM0.txt" C-m
+tmux send-keys -t $SESSION:3 "python gazebo_objects.py -a ../config/empty.txt" C-m
 
 while [ 1 ]; do
   sleep 60
